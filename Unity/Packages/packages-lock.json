@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.boxqkrtm.ide.cursor": {
+      "version": "file:com.unity.ide.cursor-2.0.27",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      }
+    },
     "com.code-philosophy.hybridclr": {
       "version": "https://github.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
