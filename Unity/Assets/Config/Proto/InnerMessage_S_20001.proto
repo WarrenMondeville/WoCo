@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ET;
 
-// ResponseType ObjectQueryResponse
+//ResponseType ObjectQueryResponse
 message ObjectQueryRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -10,7 +10,7 @@ message ObjectQueryRequest // IRequest
 	int64 InstanceId = 3;
 }
 
-// ResponseType A2M_Reload
+//ResponseType A2M_Reload
 message M2A_Reload // IRequest
 {
 	int32 RpcId = 1;
@@ -23,7 +23,7 @@ message A2M_Reload // IResponse
 	string Message = 3;
 }
 
-// ResponseType G2G_LockResponse
+//ResponseType G2G_LockResponse
 message G2G_LockRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -38,7 +38,7 @@ message G2G_LockResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType G2G_LockReleaseResponse
+//ResponseType G2G_LockReleaseResponse
 message G2G_LockReleaseRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -53,7 +53,7 @@ message G2G_LockReleaseResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType ObjectAddResponse
+//ResponseType ObjectAddResponse
 message ObjectAddRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -69,7 +69,7 @@ message ObjectAddResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType ObjectLockResponse
+//ResponseType ObjectLockResponse
 message ObjectLockRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -85,7 +85,7 @@ message ObjectLockResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType ObjectUnLockResponse
+//ResponseType ObjectUnLockResponse
 message ObjectUnLockRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -101,7 +101,7 @@ message ObjectUnLockResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType ObjectRemoveResponse
+//ResponseType ObjectRemoveResponse
 message ObjectRemoveRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -115,7 +115,7 @@ message ObjectRemoveResponse // IResponse
 	string Message = 3;
 }
 
-// ResponseType ObjectGetResponse
+//ResponseType ObjectGetResponse
 message ObjectGetRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -131,7 +131,7 @@ message ObjectGetResponse // IResponse
 	ActorId ActorId = 5;
 }
 
-// ResponseType G2R_GetLoginKey
+//ResponseType G2R_GetLoginKey
 message R2G_GetLoginKey // IRequest
 {
 	int32 RpcId = 1;
@@ -160,7 +160,7 @@ message ObjectQueryResponse // IResponse
 	bytes Entity = 4;
 }
 
-// ResponseType M2M_UnitTransferResponse
+//ResponseType M2M_UnitTransferResponse
 message M2M_UnitTransferRequest // IRequest
 {
 	int32 RpcId = 1;
@@ -170,6 +170,205 @@ message M2M_UnitTransferRequest // IRequest
 }
 
 message M2M_UnitTransferResponse // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+
+//ResponseType L2A_LoginAccountResponse
+message A2L_LoginAccountRequest //IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message L2A_LoginAccountResponse //IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType G2L_DisconnectGateUnit
+message L2G_DisconnectGateUnit // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message G2L_DisconnectGateUnit // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType R2A_GetRealmKey
+message A2R_GetRealmKey // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message R2A_GetRealmKey // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string RealmKey = 4;
+}
+
+//ResponseType G2R_GetLoginGateKey
+message R2G_GetLoginGateKey // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message G2R_GetLoginGateKey // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string GateSessionKey = 4;
+}
+
+//ResponseType L2G_AddLoginRecord
+message G2L_AddLoginRecord // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	int32 ServerId = 3;
+}
+
+message L2G_AddLoginRecord // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType L2G_RemoveLoginRecord
+message G2L_RemoveLoginRecord // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	int32 ServerId = 3;
+}
+
+message L2G_RemoveLoginRecord // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2G_RequestEnterGameState
+message G2M_RequestEnterGameState // ILocationRequest
+{
+	int32 RpcId = 1;
+}
+
+message M2G_RequestEnterGameState // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2G_RequestExitGame
+message G2M_RequestExitGame // ILocationRequest
+{
+	int32 RpcId = 1;
+}
+
+message M2G_RequestExitGame // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//---------玩家缓存相关----------------------------
+
+//增加或者更新Unit缓存
+//ResponseType UnitCache2Other_AddOrUpdateUnit
+message Other2UnitCache_AddOrUpdateUnit // IRequest
+{
+	int32 RpcId = 1;
+
+	int64 UnitId = 2;	//需要缓存的UnitId
+	repeated string EntityTypes = 3;	//实体类型
+	repeated bytes EntityBytes = 4;		//实体序列化后的bytes
+}
+
+message UnitCache2Other_AddOrUpdateUnit // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+//获取Unit缓存
+//ResponseType UnitCache2Other_GetUnit
+message Other2UnitCache_GetUnit // IRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+	repeated string ComponnetNameList = 3; // 需要获取的组件名
+}
+
+message UnitCache2Other_GetUnit // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated bytes EntityList = 4;
+	repeated string ComponentNameList = 5;
+}
+
+
+//删除Unit缓存
+//ResponseType UnitCache2Other_DeleteUnit
+message Other2UnitCache_DeleteUnit // IRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+}
+
+message UnitCache2Other_DeleteUnit // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType Chat2G_EnterChat
+message G2Chat_EnterChat // IRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+	string Name = 3;
+	int64 GateSessionActorId = 4;
+}
+
+message Chat2G_EnterChat // IResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int64 ChatInfoUnitInstanceId = 4;
+}
+
+
+//ResponseType Chat2G_ExitChat
+message G2Chat_ExitChat // IRequest
+{
+	int32 RpcId = 1;
+}
+
+message Chat2G_ExitChat // IResponse
 {
 	int32 RpcId = 1;
 	int32 Error = 2;

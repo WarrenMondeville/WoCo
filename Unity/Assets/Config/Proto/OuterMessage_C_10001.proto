@@ -13,7 +13,7 @@ message RouterSync
 	string Address = 2;
 }
 
-// ResponseType M2C_TestResponse
+//ResponseType M2C_TestResponse
 message C2M_TestRequest // ILocationRequest
 {
 	int32 RpcId = 1;
@@ -28,7 +28,7 @@ message M2C_TestResponse // IResponse
 	string response = 4;
 }
 
-// ResponseType G2C_EnterMap
+//ResponseType G2C_EnterMap
 message C2G_EnterMap // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -39,7 +39,7 @@ message G2C_EnterMap // ISessionResponse
 	int32 RpcId = 1;
 	int32 Error = 2;
 	string Message = 3;
-	/// 自己的UnitId
+	// 自己unitId
 	int64 MyId = 4;
 }
 
@@ -108,7 +108,7 @@ message M2C_Stop // IMessage
 	Unity.Mathematics.quaternion Rotation = 4;
 }
 
-// ResponseType G2C_Ping
+//ResponseType G2C_Ping
 message C2G_Ping // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -127,7 +127,7 @@ message G2C_Test // ISessionMessage
 {
 }
 
-// ResponseType M2C_Reload
+//ResponseType M2C_Reload
 message C2M_Reload // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -142,7 +142,7 @@ message M2C_Reload // ISessionResponse
 	string Message = 3;
 }
 
-// ResponseType R2C_Login
+//ResponseType R2C_Login
 message C2R_Login // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -160,7 +160,7 @@ message R2C_Login // ISessionResponse
 	int64 GateId = 6;
 }
 
-// ResponseType G2C_LoginGate
+//ResponseType G2C_LoginGate
 message C2G_LoginGate // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -181,7 +181,7 @@ message G2C_TestHotfixMessage // ISessionMessage
 	string Info = 1;
 }
 
-// ResponseType M2C_TestRobotCase
+//ResponseType M2C_TestRobotCase
 message C2M_TestRobotCase // ILocationRequest
 {
 	int32 RpcId = 1;
@@ -208,7 +208,7 @@ message M2C_TestRobotCase2 // ILocationMessage
 	int32 N = 2;
 }
 
-// ResponseType M2C_TransferMap
+//ResponseType M2C_TransferMap
 message C2M_TransferMap // ILocationRequest
 {
 	int32 RpcId = 1;
@@ -221,7 +221,7 @@ message M2C_TransferMap // ILocationResponse
 	string Message = 3;
 }
 
-// ResponseType G2C_Benchmark
+//ResponseType G2C_Benchmark
 message C2G_Benchmark // ISessionRequest
 {
 	int32 RpcId = 1;
@@ -232,4 +232,462 @@ message G2C_Benchmark // ISessionResponse
 	int32 RpcId = 1;
 	int32 Error = 2;
 	string Message = 3;
+}
+
+
+//ResponseType A2C_LoginAccount
+message C2A_LoginAccount // ISessionRequest
+{
+	int32 RpcId = 1;
+	string AccountName = 2;
+	string Password = 3;
+}
+
+message A2C_LoginAccount // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string Token = 4;
+	int64 AccountId = 5;
+}
+
+message A2C_Disconnect // ISessionMessage
+{
+	int32 Error = 1;
+}
+
+message ServerInfoProto
+{
+	int32 Id = 1;
+	int32 Status = 2;
+	string ServerName = 3;
+}
+
+//ResponseType A2C_GetServerInfos
+message C2A_GetServerInfos // ISessionRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+}
+
+message A2C_GetServerInfos // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated ServerInfoProto ServerInfoList = 4;
+}
+
+message RoleInfoProto
+{
+	int64 Id = 1;
+	string Name = 2;
+	int32 State = 3;
+	int64 AccountId = 4;
+	int64 LastLoginTime = 5;
+	int64 CreateTime = 6;
+	int32 ServerId = 7;
+}
+
+//ResponseType A2C_CreateRole
+message C2A_CreateRole // ISessionRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+	string Name = 4;
+	int32 ServerId = 5;
+}
+
+message A2C_CreateRole // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	RoleInfoProto RoleInfo = 4;
+}
+
+//ResponseType A2C_GetRoles
+message C2A_GetRoles // ISessionRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+	int32 ServerId = 4;
+}
+
+message A2C_GetRoles // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated RoleInfoProto RoleInfo = 4;
+}
+
+//ResponseType A2C_DeletRole
+message C2A_DeletRole // ISessionRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+	int64 RoleInfoId = 4;
+	int32 ServerId = 5;
+}
+
+message A2C_DeletRole // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	int64 DeletedRoleInfoId = 4;
+}
+
+//ResponseType A2C_GetReamKey
+message C2A_GetRealmKey //ISessionRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+	int32 ServerId = 4;
+}
+
+message A2C_GetReamKey // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string RealmKey = 4;
+	string RealmAddress = 5;
+}
+
+//ResponseType R2C_LoginRealm
+message C2R_LoginRealm //ISessionRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	string RealmTokenKey = 3;
+}
+
+message R2C_LoginRealm // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string GateSessionKey = 4;
+	string GateAddress = 5;
+}
+
+//ResponseType G2C_LoginGameGate
+message C2G_LoginGameGate //ISessionRequest
+{
+	int32 RpcId = 1;
+	string key = 2;
+	int64 RoleId = 3;
+	int64 Account = 4;
+}
+
+message G2C_LoginGameGate // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	string PlayerId = 4;
+}
+
+//ResponseType G2C_EnterGame
+message C2G_EnterGame //ISessionRequest
+{
+	int32 RpcId = 1;
+}
+
+message G2C_EnterGame // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	//自己unitId
+	int64 MyId = 4;
+}
+
+//ResponseType M2C_TestUnitNumeric
+message C2M_TestUnitNumeric // ILocationRequest
+{
+	int32 RpcId = 1;
+}
+
+message M2C_TestUnitNumeric // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+
+message M2C_NoticeUnitNumeric // ISessionMessage
+{
+	int64 UnitId = 1;
+	int32 NumericType = 2;
+	int64 NewValue = 3;
+}
+
+//ResponseType M2C_AddAttributePoint
+message C2M_AddAttributePoint // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 NumericType = 2;
+}
+
+message M2C_AddAttributePoint // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_StartGameLevel
+message C2M_StartGameLevel // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 LevelId = 2;
+}
+
+message M2C_StartGameLevel // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_EndGameLevel
+message C2M_EndGameLevel // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 Round = 2;
+	int32 BattleResult = 3;
+}
+
+message M2C_EndGameLevel // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_UpRoleLevel
+message C2M_UpRoleLevel // ILocationRequest
+{
+	int32 RpcId = 1;
+}
+
+message M2C_UpRoleLevel // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+message AttributeEntryproto
+{
+	int64 Id = 1;
+	int32 Key = 2;
+	int64 Value = 3;
+	int32 EntryType = 4;
+}
+
+message EuipInfoProto
+{
+	int64 Id = 1;
+	int32 Score = 2;
+	repeated AttributeEntryproto AttributeEntryProtoList = 3;
+}
+
+message ItemInfo
+{
+	int64 ItemUid = 1;
+	int32 ItemConfigId = 2;
+	int32 ItemQulity = 3;
+
+	EuipInfoProto EquipInfo = 4;
+	
+}
+
+message M2C_AllItemList // ISessionMessage
+{
+	repeated ItemInfo ItemInfoList = 1;
+	int32 ContainerType = 2;
+}
+
+message M2C_ItemUpdateOpInfo // ISessionMessage
+{
+	ItemInfo ItemInfo = 1;
+	int32 Op = 2;
+	int32 ContainerType = 3;
+}
+
+
+//ResponseType M2C_SellItem
+message C2M_SellItem // ILocationRequest
+{
+	int32 RpcId = 1;
+	int64 ItemUid = 2;
+}
+
+message M2C_SellItem // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_UnEquipItem
+message C2M_UnEquipItem // ILocationRequest
+{
+	int32 RpcId = 1;
+	int64 EquipPos = 2;
+}
+
+message M2C_UnEquipItem // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType M2C_EquipItem
+message C2M_EquipItem // ILocationRequest
+{
+	int32 RpcId = 1;
+	int64 ItemUid = 2;
+}
+
+message M2C_EquipItem // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+message ProductionProto
+{
+	int64 Id = 1;
+	int32 ConfigId = 2;
+	int64 TargetTime = 3;
+	int64 StartTime = 4;
+	int32 ProductionState = 5;
+}
+
+
+//ResponseType M2C_StartProduction
+message C2M_StartProduction // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 ConfigId = 2;
+}
+
+message M2C_StartProduction // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	ProductionProto ProductionProto = 4;
+}
+
+//ResponseType M2C_ReceiveProduction
+message C2M_ReceiveProduction // ILocationRequest
+{
+	int32 RpcId = 1;
+	int64 ProductionId = 2;
+}
+
+message M2C_ReceiveProduction // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	ProductionProto ProductionProto = 4;
+}
+
+message M2C_AllproductionList // ISessionMessage
+{
+	repeated ProductionProto ProductionProtoList = 1;
+}
+
+message TaskInfoProto
+{
+	int32 ConfigId = 1;
+	int32 TaskState = 2;
+	int32 TaskProgress = 3;
+}
+
+message M2C_UpdateTaskInfo // ISessionMessage
+{
+	TaskInfoProto TaskInfoProto = 1;
+}
+
+message M2C_AllTaskInfoList // ISessionMessage
+{
+	repeated TaskInfoProto TaskInfoProtoLis = 1;
+}
+
+//ResponseType M2C_RecieveTaskreward
+message C2M_RecieveTaskreward // ILocationRequest
+{
+	int32 RpcId = 1;
+	int32 TaskConfigId = 2;
+}
+
+message M2C_RecieveTaskreward // ILocationResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+message RankInfoProto
+{
+	int64 Id = 1;
+	int64 UnitId = 2;
+	string Name = 3;
+	int32 Count = 4;
+
+}
+
+//ResponseType Rank2C_GetRansInfo
+message C2Rank_GetRansInfo // ISessionRequest
+{
+	int32 RpcId = 1;
+}
+
+message Rank2C_GetRansInfo // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+	repeated RankInfoProto RankInfoProtoList = 4;
+}
+
+//ResponseType Chat2C_SendChatInfo
+message C2Chat_SendChatInfo // ISessionRequest
+{
+	int32 RpcId = 1;
+	string ChatMessage = 2;
+}
+
+message Chat2C_SendChatInfo // ISessionResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+message Chat2C_NoticeChatInfo // ISessionMessage
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+
+	string Name = 4;
+	string ChatMessage = 5;
 }
