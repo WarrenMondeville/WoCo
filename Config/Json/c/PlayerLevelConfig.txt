@@ -1,0 +1,15 @@
+{"dict": [
+[1, {"_t":"PlayerLevelConfig","_id":1,"NeedExp":1}],
+[2, {"_t":"PlayerLevelConfig","_id":2,"NeedExp":2}],
+[3, {"_t":"PlayerLevelConfig","_id":3,"NeedExp":30}],
+[4, {"_t":"PlayerLevelConfig","_id":4,"NeedExp":40}],
+[5, {"_t":"PlayerLevelConfig","_id":5,"NeedExp":50}],
+[6, {"_t":"PlayerLevelConfig","_id":6,"NeedExp":60}],
+[7, {"_t":"PlayerLevelConfig","_id":7,"NeedExp":70}],
+[8, {"_t":"PlayerLevelConfig","_id":8,"NeedExp":80}],
+[9, {"_t":"PlayerLevelConfig","_id":9,"NeedExp":90}],
+[10, {"_t":"PlayerLevelConfig","_id":10,"NeedExp":100}],
+[11, {"_t":"PlayerLevelConfig","_id":11,"NeedExp":110}],
+[12, {"_t":"PlayerLevelConfig","_id":12,"NeedExp":120}],
+[13, {"_t":"PlayerLevelConfig","_id":13,"NeedExp":130}],
+]}
