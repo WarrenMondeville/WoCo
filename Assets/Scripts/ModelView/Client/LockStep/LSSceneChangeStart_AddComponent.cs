@@ -15,7 +15,7 @@ namespace ET.Client
             
             
             // 创建房间UI
-            await UIHelper.Create(args.Room, UIType.UILSRoom, UILayer.Low);
+            //await UIHelper.Create(args.Room, UIType.UILSRoom, UILayer.Low);
             
             // 加载场景资源
             await resourcesLoaderComponent.LoadSceneAsync($"Assets/Bundles/Scenes/{room.Name}.unity", LoadSceneMode.Single);
