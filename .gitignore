@@ -51,6 +51,6 @@ obj/
 Publish/
 */Temp/
 */TestResults/
-/Config/Json
-/Config/Excel
+Config/Json/*
+Config/Excel/*
 /Packages/com.unity.ide.cursor-2.0.27

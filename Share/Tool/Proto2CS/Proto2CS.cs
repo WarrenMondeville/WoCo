@@ -23,10 +23,10 @@ namespace ET
 
     public static partial class InnerProto2CS
     {
-        private const string protoDir = "../Unity/Assets/Config/Proto";
-        private const string clientMessagePath = "../Unity/Assets/Scripts/Model/Generate/Client/Message/";
-        private const string serverMessagePath = "../Unity/Assets/Scripts/Model/Generate/Server/Message/";
-        private const string clientServerMessagePath = "../Unity/Assets/Scripts/Model/Generate/ClientServer/Message/";
+        private const string protoDir = "../Assets/Config/Proto";
+        private const string clientMessagePath = "../Assets/Scripts/Model/Generate/Message/";
+        private const string serverMessagePath = "DotNet/Model/Server/Generate/Message/";
+        //private const string clientServerMessagePath = "../Assets/Scripts/Model/Generate/ClientServer/Message/";
         private static readonly char[] splitChars = [' ', '\t'];
         private static readonly List<OpcodeInfo> msgOpcode = [];
 
@@ -36,7 +36,7 @@ namespace ET
 
             RemoveAllFilesExceptMeta(clientMessagePath);
             RemoveAllFilesExceptMeta(serverMessagePath);
-            RemoveAllFilesExceptMeta(clientServerMessagePath);
+            //RemoveAllFilesExceptMeta(clientServerMessagePath);
 
             List<string> list = FileHelper.GetAllFiles(protoDir, "*proto");
             foreach (string s in list)
@@ -56,7 +56,7 @@ namespace ET
 
             RemoveUnusedMetaFiles(clientMessagePath);
             RemoveUnusedMetaFiles(serverMessagePath);
-            RemoveUnusedMetaFiles(clientServerMessagePath);
+            //RemoveUnusedMetaFiles(clientServerMessagePath);
         }
 
         private static void ProtoFile2CS(string fileName, string protoName, string cs, int startOpcode)
@@ -226,13 +226,13 @@ namespace ET
             {
                 GenerateCS(result, clientMessagePath, proto);
                 GenerateCS(result, serverMessagePath, proto);
-                GenerateCS(result, clientServerMessagePath, proto);
+                //GenerateCS(result, clientServerMessagePath, proto);
             }
 
             if (cs.Contains('S'))
             {
                 GenerateCS(result, serverMessagePath, proto);
-                GenerateCS(result, clientServerMessagePath, proto);
+                //GenerateCS(result, clientServerMessagePath, proto);
             }
         }
 

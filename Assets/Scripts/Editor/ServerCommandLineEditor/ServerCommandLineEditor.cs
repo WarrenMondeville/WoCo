@@ -27,7 +27,7 @@ namespace ET
 
         public void OnEnable()
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo("Config/Excel/cs/StartConfig");
+            DirectoryInfo directoryInfo = new DirectoryInfo("Config/Excel/s/StartConfig");
             this.startConfigs = directoryInfo.GetDirectories().Select(x => x.Name).ToArray();
         }
 

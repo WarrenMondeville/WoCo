@@ -55,17 +55,17 @@ namespace ET
     {
         private static string template;
 
-        private const string ClientClassDir = "../Unity/Assets/Scripts/Model/Generate/Client/Config";
+        private const string ClientClassDir = "../Assets/Scripts/Model/Generate/Config";
         // 服务端因为机器人的存在必须包含客户端所有配置，所以单独的c字段没有意义,单独的c就表示cs
-        private const string ServerClassDir = "../Unity/Assets/Scripts/Model/Generate/Server/Config";
+        private const string ServerClassDir = "DotNet/Model/Server/Generate/Config";
 
-        private const string CSClassDir = "../Unity/Assets/Scripts/Model/Generate/ClientServer/Config";
+        private const string CSClassDir = "DotNet/Model/Server/Generate/ClientServer/Config";
 
-        private const string excelDir = "../Unity/Assets/Config/Excel/";
+        private const string excelDir = "../Assets/Config/Excel/";
 
         private const string jsonDir = "../Config/Json/{0}/{1}";
 
-        private const string clientProtoDir = "../Unity/Assets/Bundles/Config";
+        private const string clientProtoDir = "../Assets/Bundles/Config";
         private const string serverProtoDir = "../Config/Excel/{0}/{1}";
         private const string replaceStr = "/{0}/{1}";
         private static Assembly[] configAssemblies = new Assembly[3];
