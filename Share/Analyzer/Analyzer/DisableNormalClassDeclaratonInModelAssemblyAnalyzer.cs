@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace ET.Analyzer
 {
-    [DiagnosticAnalyzer(LanguageNames.CSharp)]
+/*    [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class DisableNormalClassDeclaratonInModelAssemblyAnalyzer : DiagnosticAnalyzer
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(EntityClassDeclarationAnalyzerrRule.Rule);
@@ -56,6 +56,6 @@ namespace ET.Analyzer
             Diagnostic diagnostic = Diagnostic.Create(EntityClassDeclarationAnalyzerrRule.Rule, classDeclarationSyntax.Identifier.GetLocation(), namedTypeSymbol);
             context.ReportDiagnostic(diagnostic);
         }
-    }
+    }*/
 }
 
