@@ -31,19 +31,19 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <Compile Include="..\..\Unity\Assets\Mono\Core\**\*.cs">
+        <Compile Include="..\..\Assets\Mono\Core\**\*.cs">
             <Link>Core\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
         
-        <Compile Include="..\..\Unity\Assets\Scripts\Model\Share\Module\Config\**\*.cs">
+        <Compile Include="..\..\Assets\Scripts\Model\Share\Module\Config\**\*.cs">
             <Link>Module\Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
 
-        <Compile Include="..\..\Unity\Assets\Scripts\Model\Share\Module\Log\**\*.cs">
+        <Compile Include="..\..\Assets\Scripts\Model\Share\Module\Log\**\*.cs">
             <Link>Module\Log\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
 
-        <Compile Include="..\..\Unity\Assets\Scripts\Core\Network\OpcodeRangeDefine.cs">
+        <Compile Include="..\..\Assets\Scripts\Core\Network\OpcodeRangeDefine.cs">
             <Link>Module\Message\OpcodeRangeDefine.cs</Link>
         </Compile>
     </ItemGroup>
